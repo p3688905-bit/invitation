@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大一國文：邀請函寫作與AI輔助工作坊</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 使用 Inter 字體以保持現代感 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        .step-content {
+            display: none;
+        }
+        .step-active {
+            display: block;
+        }
+        .ai-response-box {
+            background-color: #f0f9ff; /* Blue-50 */
+            border-left: 4px solid #3b82f6; /* Blue-500 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+        <header class="mb-8 border-b pb-4">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-800">大一國文：邀請函寫作與 AI 輔助工作坊</h1>
+            <p class="text-lg text-gray-600 mt-2">教學對象：大學生 | 學習目標：掌握邀請函結構並運用 AI 提升寫作效率。</p>
+        </header>
+
+        <!-- 步驟導航條 -->
+        <div id="step-navigation" class="flex flex-wrap justify-between mb-8">
+            <!-- 導航會由 JS 動態生成 -->
+        </div>
+
+        <!-- 內容區塊 -->
+        <main id="workshop-content">
+            <!-- 第 1 步：學習目標與基本框架 -->
+            <section id="step-1" class="step-content step-active">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟一：邀請函的基本框架</h2>
+                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500 mb-6">
+                    <h3 class="font-semibold text-yellow-800">學習目標</h3>
+                    <ul class="list-disc list-inside text-gray-700 ml-4">
+                        <li>掌握邀請函的六大基本結構。</li>
+                        <li>學會利用 AI 生成寫作框架、個性化與創意語句。</li>
+                        <li>提升邀請函寫作的效率與質量。</li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">壹、活動內容設定</h3>
+                <p class="text-gray-600 mb-4">請先為您的邀請函設定一個活動主題，此資訊將用於後續的 AI 模擬生成。</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <label for="activity-name" class="block text-sm font-medium text-gray-700">活動名稱</label>
+                        <input type="text" id="activity-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：新世代寫作趨勢工作坊">
+                    </div>
+                    <div>
+                        <label for="activity-time" class="block text-sm font-medium text-gray-700">時間 (年‧月‧日‧活動時間)</label>
+                        <input type="text" id="activity-time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：2025年12月1日 (一) 14:00 - 16:00">
+                    </div>
+                    <div>
+                        <label for="activity-location" class="block text-sm font-medium text-gray-700">地點</label>
+                        <input type="text" id="activity-location" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：綜合教學大樓 R301 教室">
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 my-6">貳、邀請函結構</h3>
+                
+                <!-- 補充講解區塊 1 -->
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-6 text-sm">
+                    <h4 class="font-bold text-blue-800 mb-2">💡 國文課堂重點講解：六大結構的關鍵作用</h4>
+                    <ul class="list-disc list-inside text-gray-700 ml-4 space-y-1">
+                        <li>**受邀者稱謂**：務必精確，體現尊重。正式信函應包含職稱，如「尊敬的 王教授」。</li>
+                        <li>**開場問候**：簡潔禮貌，如「近來寒舍有恙，不知一切安好？」，為後續正式邀請鋪墊。</li>
+                        <li>**活動介紹**：明確說明「What」和「Why」，讓受邀者秒懂活動價值與主題。</li>
+                        <li>**活動詳情**：包含「When」、「Where」和「How」，務必清楚列點，方便受邀者快速記錄。</li>
+                        <li>**邀請內容**：這是核心賣點，強調對受邀者個人的益處或活動的獨特性、不可替代性。</li>
+                        <li>**結尾致意**：表達期待與感謝，並明確指示下一步行動（RSVP/回覆）。</li>
+                    </ul>
+                </div>
+                <!-- 補充講解區塊 1 結束 -->
+                
+                <p class="text-gray-600 mb-4">請在右側欄位中，簡述每個結構應包含的「核心內容」。</p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="font-semibold text-gray-800 p-2 bg-gray-100 rounded">結構</div>
+                    <div class="font-semibold text-gray-800 p-2 bg-gray-100 rounded">核心內容 (請填寫)</div>
+
+                    <!-- 結構項目 -->
+                    <div class="p-2 border-b">受邀者稱謂</div><input type="text" class="p-2 border rounded-md" value="例：尊敬的 [職稱/姓名] 教授">
+                    <div class="p-2 border-b">開場問候</div><input type="text" class="p-2 border rounded-md" value="例：簡短、禮貌的寒暄">
+                    <div class="p-2 border-b">活動介紹 (目的/主題)</div><input type="text" class="p-2 border rounded-md" value="例：活動主旨、重要性">
+                    <div class="p-2 border-b">活動詳情 (時間/地點/形式)</div><input type="text" class="p-2 border rounded-md" value="例：明確告知 RSVP 資訊">
+                    <div class="p-2 border-b">邀請內容 (參與原因/價值)</div><input type="text" class="p-2 border rounded-md" value="例：強調對受邀者的益處">
+                    <div class="p-2 border">結尾致意</div><input type="text" class="p-2 border rounded-md" value="例：期待、感謝、署名、日期">
+                </div>
+
+            </section>
+
+            <!-- 第 2 步：利用 AI 生成框架 -->
+            <section id="step-2" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟二：AI 生成框架與修正</h2>
+                
+                <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500 mb-6">
+                    <h3 class="font-semibold text-indigo-800">您目前的活動設定：</h3>
+                    <p class="text-gray-700 mt-2"><span class="font-bold">活動名稱:</span> <span id="display-name-2"></span></p>
+                    <p class="text-gray-700"><span class="font-bold">時間地點:</span> <span id="display-info-2"></span></p>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">壹、問題設定 (提示語撰寫)</h3>
+                
+                <!-- 補充講解區塊 2 -->
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500 mb-6 text-sm">
+                    <h4 class="font-bold text-red-800 mb-2">🎯 提示語寫作原則：STAR 要素</h4>
+                    <p class="text-gray-700">一個好的提示語能讓 AI 產出更精確的結果。請務必包含以下要素：</p>
+                    <ul class="list-disc list-inside text-gray-700 ml-4 space-y-1 mt-1">
+                        <li>**S (Style/角色)**：指定語氣（如：正式、專業、親切）。</li>
+                        <li>**T (Task/任務)**：明確目標（如：生成邀請函的六大結構框架）。</li>
+                        <li>**A (Audience/對象)**：明確讀者（如：學生、教授、業界人士）。</li>
+                        <li>**R (Requirements/要求)**：具體條件（如：主題必須是 OOOO、字數限制等）。</li>
+                    </ul>
+                </div>
+                <!-- 補充講解區塊 2 結束 -->
+
+                <p class="text-gray-600 mb-4">請嘗試撰寫一個精確的提示語，引導 AI 產生正式且專業的邀請函框架。</p>
+                
+                <div class="space-y-4">
+                    <label for="ai-prompt-frame" class="block text-sm font-medium text-gray-700">您的提示語</label>
+                    <textarea id="ai-prompt-frame" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：請幫我生成一封邀請函的基本框架，主題為『[您的活動名稱]』，語氣正式且專業。"></textarea>
+                    <button onclick="simulateAIFrame()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150">
+                        模擬 AI 生成框架
+                    </button>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">貳、AI 生成內容 (模擬結果)</h3>
+                <div id="ai-frame-result" class="ai-response-box">
+                    點擊上方按鈕後將顯示 AI 模擬生成的結果...
+                </div>
+                
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">參、修正與優化</h3>
+                <p class="text-gray-600 mb-4">請根據活動需求和受邀者身份，修改 AI 生成的框架內容，使其更符合實際應用。</p>
+                
+                <label for="revised-frame" class="block text-sm font-medium text-gray-700">修改後內容</label>
+                <textarea id="revised-frame" rows="6" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="請將 AI 框架內容複製過來，並進行優化。"></textarea>
+            </section>
+
+            <!-- 第 3 步：個性化語句撰寫 -->
+            <section id="step-3" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟三：個性化語句撰寫</h2>
+                
+                <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500 mb-6">
+                    <h3 class="font-semibold text-pink-800">活動目標：</h3>
+                    <p class="text-gray-700 mt-2">如何讓邀請函顯得不只是大量發送，而是專門為受邀者所寫？關鍵在於「個性化」語句。</p>
+                </div>
+
+                <!-- 補充講解區塊 3 -->
+                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500 mb-6 text-sm">
+                    <h4 class="font-bold text-yellow-800 mb-2">🖋️ 個性化寫作技巧：展現而非告知 (Show, Don't Tell)</h4>
+                    <p class="text-gray-700">當你邀請某人時，不要只說「你的意見很重要」。要**具體提到**「我們注意到你在 [某領域] 的研究，這與我們 [活動主題] 高度相關」。具體的細節能讓受邀者感到被尊重和重視，從而提高回覆率。</p>
+                </div>
+                <!-- 補充講解區塊 3 結束 -->
+
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">壹、背景資訊設定</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label for="recipient-identity" class="block text-sm font-medium text-gray-700">假設受邀者身份</label>
+                        <input type="text" id="recipient-identity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" value="王小明同學 (曾發表與活動主題相關的評論)">
+                    </div>
+                    <div>
+                        <label for="recipient-interest" class="block text-sm font-medium text-gray-700">受邀者興趣/貢獻 (與活動相關)</label>
+                        <input type="text" id="recipient-interest" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" value="對「新世代寫作」的數位工具應用有深入研究">
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">貳、AI 生成個性化語句</h3>
+                <p class="text-gray-600 mb-4">根據上述背景資訊，請撰寫提示語來生成一段「邀請內容」中的個性化語句。</p>
+
+                <div class="space-y-4">
+                    <label for="ai-prompt-personalized" class="block text-sm font-medium text-gray-700">您的提示語</label>
+                    <textarea id="ai-prompt-personalized" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：幫我撰寫一段個性化邀請語句，對象是 [您的受邀者身份]，邀請參加 [您的活動名稱]，強調其 [受邀者興趣/貢獻] 的契合度。"></textarea>
+                    <button onclick="simulateAIPersonalized()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150">
+                        模擬 AI 生成個性化語句
+                    </button>
+                </div>
+
+                <div id="ai-personalized-result" class="ai-response-box">
+                    點擊上方按鈕後將顯示 AI 模擬生成的結果...
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">參、您的評價與修正</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">1. 語氣是否適合 (正式、親切、專業等)?</label>
+                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="請描述您的評價">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">2. 是否有必要調整的地方?</label>
+                        <textarea rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="請寫下您的建議"></textarea>
+                    </div>
+                    <div>
+                        <label for="revised-personalized" class="block text-sm font-medium text-gray-700">3. 修改後的版本</label>
+                        <textarea id="revised-personalized" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="請寫下您最終優化後的版本"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第 4 步：創意語句設計 -->
+            <section id="step-4" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟四：創意開場與結束語設計</h2>
+                
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500 mb-6">
+                    <h3 class="font-semibold text-green-800">創意目標：</h3>
+                    <p class="text-gray-700 mt-2">好的開場能抓住受邀者的目光，好的結束能提高回應率。使用 AI 讓語氣更生動！</p>
+                </div>
+
+                <!-- 補充講解區塊 4 -->
+                <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500 mb-6 text-sm">
+                    <h4 class="font-bold text-indigo-800 mb-2">🚀 關鍵功能：鉤子 (Hook) 與行動呼籲 (CTA)</h4>
+                    <ul class="list-disc list-inside text-gray-700 ml-4 space-y-1">
+                        <li>**開場語 (Hook)**：必須在 1-2 句話內引起好奇心或切中痛點，例如提問、陳述一個令人興奮的事實，讓讀者想繼續閱讀。</li>
+                        <li>**結束語 (CTA - Call to Action)**：需明確告知受邀者下一步要做什麼 (回覆、點擊連結、報名)，並創造緊迫感或期待感，促使其行動。</li>
+                    </ul>
+                </div>
+                <!-- 補充講解區塊 4 結束 -->
+
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">壹、開場語練習</h3>
+                <div class="space-y-4">
+                    <label for="ai-prompt-opening" class="block text-sm font-medium text-gray-700">您的提示語 (要求：熱情、有吸引力)</label>
+                    <textarea id="ai-prompt-opening" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：幫我設計一個有吸引力的開場語，語氣熱情，適合邀請對『[您的活動名稱]』感興趣的人。"></textarea>
+                    <button onclick="simulateAIOpening()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150">
+                        模擬 AI 生成開場語
+                    </button>
+                    <div id="ai-opening-result" class="ai-response-box">...</div>
+                </div>
+                <div class="mt-4">
+                    <label for="revised-opening" class="block text-sm font-medium text-gray-700">您的感想與修改後的版本</label>
+                    <textarea id="revised-opening" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="評價 AI 的結果並進行優化。"></textarea>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">貳、結束語練習</h3>
+                <div class="space-y-4">
+                    <label for="ai-prompt-closing" class="block text-sm font-medium text-gray-700">您的提示語 (要求：友好、表達期待、鼓勵回覆)</label>
+                    <textarea id="ai-prompt-closing" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：請設計一段友好的結束語，鼓勵受邀者回覆並表達對『[您的活動名稱]』的期待。"></textarea>
+                    <button onclick="simulateAIClosing()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150">
+                        模擬 AI 生成結束語
+                    </button>
+                    <div id="ai-closing-result" class="ai-response-box">...</div>
+                </div>
+                <div class="mt-4">
+                    <label for="revised-closing" class="block text-sm font-medium text-gray-700">您的感想與修改後的版本</label>
+                    <textarea id="revised-closing" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="評價 AI 的結果並進行優化。"></textarea>
+                </div>
+            </section>
+
+            <!-- 第 5 步：綜合邀請函撰寫 -->
+            <section id="step-5" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟五：綜合邀請函撰寫</h2>
+                
+                <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-500 mb-6">
+                    <h3 class="font-semibold text-gray-800">總結目標：</h3>
+                    <p class="text-gray-700 mt-2">請根據前面四個步驟的練習結果，將優化後的各個環節組合成一份完整的邀請函。</p>
+                </div>
+
+                <h3 class="text-xl font-semibold text-gray-700 mb-3">綜合邀請函草稿</h3>
+                <p class="text-sm text-red-500 mb-2">💡 點擊下方按鈕可快速匯入前面步驟優化後的內容 (如果已填寫)。</p>
+
+                <button onclick="compileDraft()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150 mb-4">
+                    自動匯入草稿
+                </button>
+
+                <textarea id="final-invitation-draft" rows="20" class="mt-1 block w-full rounded-md border-gray-300 shadow-xl focus:border-blue-500 focus:ring-blue-500 p-4 border" placeholder="在這裡完成您的最終邀請函草稿..."></textarea>
+            </section>
+
+            <!-- 第 6 步：自我評估與反思 -->
+            <section id="step-6" class="step-content">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">步驟六：自我評估與反思</h2>
+                
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-6">
+                    <h3 class="font-semibold text-blue-800">反思目標：</h3>
+                    <p class="text-gray-700 mt-2">評估 AI 在寫作過程中的價值，以及思考未來的應用方向。</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">一、您認為 AI 在哪些方面提供了幫助？</label>
+                        <textarea rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：快速生成框架、提供不同語氣的範例、節省了構思開場/結尾的時間..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">二、哪些部分需要進一步改進？</label>
+                        <textarea rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：AI 生成的個性化語句有時不夠精準，仍需人工修改細節..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">三、未來，您會如何運用 AI 輔助寫作？</label>
+                        <textarea rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="例：將 AI 作為初稿產生器，專注於語氣和細節的優化；用於不同語言的翻譯..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- 步驟控制按鈕 -->
+        <div class="mt-8 pt-4 border-t flex justify-between">
+            <button onclick="prevStep()" id="prev-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg transition duration-150 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                上一步
+            </button>
+            <button onclick="nextStep()" id="next-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150 flex items-center">
+                下一步
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+        const steps = [
+            { id: 1, title: '基本框架設定' },
+            { id: 2, title: 'AI 生成框架' },
+            { id: 3, title: '個性化語句' },
+            { id: 4, title: '創意語句設計' },
+            { id: 5, title: '綜合邀請函' },
+            { id: 6, title: '自我評估反思' },
+        ];
+
+        // --- 核心導航邏輯 ---
+
+        function updateNavigation() {
+            const navContainer = document.getElementById('step-navigation');
+            navContainer.innerHTML = steps.map(step => {
+                const isActive = step.id === currentStep;
+                const isCompleted = step.id < currentStep;
+                
+                let classes = 'p-2 text-xs md:text-sm font-medium rounded-full transition duration-300 ease-in-out cursor-pointer';
+
+                if (isActive) {
+                    classes += ' bg-blue-600 text-white shadow-md';
+                } else if (isCompleted) {
+                    classes += ' bg-green-500 text-white opacity-70 hover:opacity-100';
+                } else {
+                    classes += ' bg-gray-200 text-gray-500 hover:bg-gray-300';
+                }
+
+                return `
+                    <div class="${classes}" onclick="goToStep(${step.id})">
+                        ${step.id}. ${step.title}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateStepContent() {
+            document.querySelectorAll('.step-content').forEach(section => {
+                section.classList.remove('step-active');
+            });
+            document.getElementById(`step-${currentStep}`).classList.add('step-active');
+            
+            // 更新步驟切換按鈕
+            document.getElementById('prev-btn').style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            document.getElementById('next-btn').textContent = currentStep === totalSteps ? '完成工作坊' : '下一步';
+            document.getElementById('next-btn').classList.toggle('bg-green-600', currentStep === totalSteps);
+            document.getElementById('next-btn').classList.toggle('hover:bg-green-700', currentStep === totalSteps);
+            document.getElementById('next-btn').classList.toggle('bg-blue-600', currentStep !== totalSteps);
+            document.getElementById('next-btn').classList.toggle('hover:bg-blue-700', currentStep !== totalSteps);
+
+
+            // 處理跨步驟的資料顯示
+            updateCrossStepData();
+            updateNavigation();
+        }
+
+        function updateCrossStepData() {
+            // 步驟 2/3/4/5 顯示步驟 1 的活動資訊
+            const name = document.getElementById('activity-name').value || '【活動名稱】';
+            const time = document.getElementById('activity-time').value || '【時間】';
+            const location = document.getElementById('activity-location').value || '【地點】';
+            
+            document.getElementById('display-name-2').textContent = name;
+            document.getElementById('display-info-2').textContent = `${time} 於 ${location}`;
+
+            // 滾動到頁面頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToStep(stepNumber) {
+            currentStep = stepNumber;
+            updateStepContent();
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+            } else if (currentStep === totalSteps) {
+                // IMPORTANT: Use custom modal instead of alert() in production apps, but for a simple learning tool, alert is sometimes acceptable. Sticking to the previous design.
+                alert('恭喜您！已完成邀請函寫作與 AI 輔助工作坊。請將您的最終邀請函與反思內容提交給老師。');
+            }
+            updateStepContent();
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+            }
+            updateStepContent();
+        }
+
+        // --- AI 模擬生成邏輯 ---
+
+        // 模擬 AI 生成框架
+        function simulateAIFrame() {
+            const activityName = document.getElementById('activity-name').value || '「新世代寫作趨勢」工作坊';
+            const prompt = document.getElementById('ai-prompt-frame').value || `請幫我生成一封邀請函的基本框架，主題為『${activityName}』，語氣正式且專業。`;
+            
+            const simulatedResponse = `
+【提示語】
+${prompt}
+
+【AI 生成內容】
+1. 受邀者稱謂：[尊敬的 [職稱/姓名] 先生/女士/同學]
+2. 開場問候：[簡短的專業問候，表達活動舉辦方的誠摯心意，例如「時值仲夏，遙祝安康」。]
+3. 活動介紹（主題與目的）：[明確指出活動的重大意義，強調 ${activityName} 在當前學術或產業中的重要性。]
+4. 活動詳情（時間、地點、形式）：[詳細列出舉辦時間、具體地點及活動形式 (如講座、圓桌討論等)。]
+5. 邀請內容（參與原因或價值）：[針對受邀者的專業背景或興趣，闡明參與本次活動能夠帶來的具體收穫與交流機會。]
+6. 結尾致意：[表達由衷的期待，並提供 RSVP (回覆) 資訊，署名與日期。]
+            `;
+            document.getElementById('ai-frame-result').textContent = simulatedResponse.trim();
+        }
+
+        // 模擬 AI 生成個性化語句
+        function simulateAIPersonalized() {
+            const recipient = document.getElementById('recipient-identity').value || '王小明同學';
+            const interest = document.getElementById('recipient-interest').value || '對「新世代寫作」的數位工具應用有深入研究';
+            const activityName = document.getElementById('activity-name').value || '「新世代寫作趨勢」工作坊';
+            
+            const prompt = document.getElementById('ai-prompt-personalized').value || `幫我撰寫一段個性化邀請語句，對象是${recipient}，邀請參加${activityName}，強調其${interest}的契合度。`;
+
+            const simulatedResponse = `
+【提示語】
+${prompt}
+
+【AI 生成內容】
+我們特別注意到您在「${interest}」領域的獨到見解。您的研究方向與本次 ${activityName} 中關於 AI 寫作工具的專題探討高度契合。我們誠摯邀請您蒞臨，相信您的參與將為本次工作坊帶來寶貴的學術激盪。
+            `;
+            document.getElementById('ai-personalized-result').textContent = simulatedResponse.trim();
+        }
+
+        // 模擬 AI 生成開場語
+        function simulateAIOpening() {
+            const activityName = document.getElementById('activity-name').value || '寫作工作坊';
+            const prompt = document.getElementById('ai-prompt-opening').value || `幫我設計一個有吸引力的開場語，語氣熱情，適合邀請對${activityName}感興趣的人。`;
+
+            const simulatedResponse = `
+【提示語】
+${prompt}
+
+【AI 生成內容】
+厭倦了傳統的寫作模式嗎？一個讓你「筆」下生花、跟上時代浪潮的機會來了！「${activityName}」將為您揭示 AI 時代下，如何輕鬆駕馭文字，讓您的表達能力極速升級！
+            `;
+            document.getElementById('ai-opening-result').textContent = simulatedResponse.trim();
+        }
+
+        // 模擬 AI 生成結束語
+        function simulateAIClosing() {
+            const prompt = document.getElementById('ai-prompt-closing').value || `請設計一段友好的結束語，鼓勵受邀者回覆並表達期待。`;
+
+            const simulatedResponse = `
+【提示語】
+${prompt}
+
+【AI 生成內容】
+本次工作坊席位有限，請您務必在 [回覆日期] 前掃描二維碼或點擊連結完成報名，以免向隅。我們熱切期待您的回覆，並期盼在活動現場與您共同見證寫作領域的全新可能！
+            `;
+            document.getElementById('ai-closing-result').textContent = simulatedResponse.trim();
+        }
+
+        // 步驟 5: 匯入草稿
+        function compileDraft() {
+            const name = document.getElementById('activity-name').value || '【活動名稱】';
+            const time = document.getElementById('activity-time').value || '【時間】';
+            const location = document.getElementById('activity-location').value || '【地點】';
+            
+            const opening = document.getElementById('revised-opening').value.trim() || '親愛的同學：您是否渴望掌握未來寫作的核心競爭力？一個讓您文字能力極速升級的機會已為您準備好！';
+            const personalized = document.getElementById('revised-personalized').value.trim() || '本次活動專為像您這樣關注新興科技與文學結合的學生設計。您的見解與活動主題高度契合，我們相信您的參與將為工作坊帶來寶貴的學術激盪。';
+            const closing = document.getElementById('revised-closing').value.trim() || '請務必在指定日期前回覆報名，以便我們為您準備資料。我們熱切期待您的光臨，並期盼在現場與您相會！';
+
+            const draft = `
+【標題】
+[您的系級/單位名稱] 敬邀：參加 ${name} 邀請函
+
+【受邀者稱謂】
+尊敬的 [受邀者姓名] 先生/女士/同學：
+
+【開場問候】
+${opening}
+
+【活動介紹（主題與目的）】
+為應對數位時代的寫作挑戰，本次【${name}】旨在探討 AI 時代下的寫作趨勢與數位工具應用，幫助您突破傳統框架，發掘文字表達的無限潛能。
+
+【活動詳情】
+時間：${time}
+地點：${location}
+形式：主題演講與實務操作環節，提供一對一寫作輔導諮詢。
+
+【邀請內容（參與原因/價值）】
+${personalized}
+
+【結尾致意】
+${closing}
+
+主辦單位：[您的系級/單位名稱] 敬上
+日期：[今天的日期]
+            `;
+            document.getElementById('final-invitation-draft').value = draft.trim();
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStepContent();
+        });
+    </script>
+</body>
+</html>
